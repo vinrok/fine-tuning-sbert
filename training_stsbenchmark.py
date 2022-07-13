@@ -27,10 +27,11 @@ logging.basicConfig(format='%(asctime)s - %(message)s',
                     handlers=[LoggingHandler()])
 #### /print debug information to stdout
 
-
+os.makedirs('output', exist_ok=True)
+os.makedirs('data', exist_ok=True)
 
 #Check if dataset exsist. If not, download and extract  it
-sts_dataset_path = 'datasets/stsbenchmark.tsv.gz'
+sts_dataset_path = 'data/stsbenchmark.tsv.gz'
 
 if not os.path.exists(sts_dataset_path):
     util.http_get('https://sbert.net/datasets/stsbenchmark.tsv.gz', sts_dataset_path)

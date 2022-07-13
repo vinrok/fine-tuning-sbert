@@ -12,6 +12,7 @@ from transformers import AutoModelForMaskedLM, AutoTokenizer
 from transformers import DataCollatorForLanguageModeling, DataCollatorForWholeWordMask
 from transformers import Trainer, TrainingArguments
 import sys
+import os
 import gzip
 from datetime import datetime
 
@@ -33,6 +34,7 @@ mlm_prob = 0.15                 #Probability that a word is replaced by a [MASK]
 model = AutoModelForMaskedLM.from_pretrained(model_name)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
+os.makedirs('output', exist_ok=True)
 
 output_dir = "output/{}-{}".format(model_name.replace("/", "_"),  datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
 print("Save checkpoints to:", output_dir)

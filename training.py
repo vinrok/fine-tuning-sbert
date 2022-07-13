@@ -12,6 +12,9 @@ from torch.utils.data import DataLoader
 
 #python training.py model_name_path file_path
 
+os.makedirs('output', exist_ok=True)
+os.makedirs('data', exist_ok=True)
+
 #### Just some code to print debug information to stdout
 logging.basicConfig(format='%(asctime)s - %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
@@ -31,6 +34,8 @@ evaluation_steps = 500
 # warmup_steps = 500
 
 #####
+
+
 
 if not os.path.exists(sts_dataset_path):
     util.http_get('https://sbert.net/datasets/stsbenchmark.tsv.gz', sts_dataset_path)
